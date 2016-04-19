@@ -6,7 +6,7 @@ public class WorldGrid {
     {
         this.ht = height;
         this.wd = width;
-        Organism[][] createdGrid = new Organism[this.ht][this.wd];
+        Cell[][] createdGrid = new Cell[this.ht][this.wd];
     }
 }
 
