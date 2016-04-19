@@ -20,9 +20,9 @@ public class Organism {
     }
     public String getName()
     {
-        return this.nm;
+        return this.name;
     }
-    public void setName(string nm)
+    public void setName(String nm)
     {
         this.name = nm;
     }
@@ -30,7 +30,7 @@ public class Organism {
     {
         return this.lifetime;
     }
-    public void setLifetime(int ltime;)
+    public void setLifetime(int ltime)
     {
         this.lifetime = ltime;
     }
