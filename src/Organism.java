@@ -3,6 +3,7 @@ import java.awt.Point;
 public class Organism {
     public String name;
     public Point location = new Point(); // construct new location Point at default of (0,0)
+    int lifetime;
     public enum State {
         MOVE, LIVE, REPRODUCE, TIRE, EAT
     }
@@ -17,5 +18,20 @@ public class Organism {
         this.currentState = State.LIVE;
         this.currentMovement = Movement.STATIC;
     }
+    public String getName()
+    {
+        return this.nm;
+    }
+    public void setName(string nm)
+    {
+        this.name = nm;
+    }
+    public int getLifetime()
+    {
+        return this.lifetime;
+    }
+    public void setLifetime(int ltime;)
+    {
+        this.lifetime = ltime;
+    }
 }
-
