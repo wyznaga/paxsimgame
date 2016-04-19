@@ -14,8 +14,8 @@ public class Organism {
     Movement currentMovement;
     void simulate()
     {
-        this.currentState = LIVE;
-        this.currentMovement = STATIC;
+        this.currentState = State.LIVE;
+        this.currentMovement = Movement.STATIC;
     }
 }
 
