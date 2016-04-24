@@ -9,5 +9,15 @@ public class Cell {
     }
 
     State currentState;
-}
 
+    public void setLocation(int xLoc, int yLoc)
+    {
+        this.location.x = xLoc;
+        this.location.y = yLoc;
+    }
+
+    public Point getLocation()
+    {
+        return new Point(this.location);
+    }
+}
