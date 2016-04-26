@@ -5,7 +5,7 @@ public class Cell {
     public Point location = new Point(); // initialize location Point at (0,0)
     public Organism org;
     public enum State {
-        EMPTY, PREDATOR, PREY
+        EMPTY, GHOST, PAX, PILL
     }
 
     State currentState;

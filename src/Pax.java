@@ -1,5 +1,5 @@
-public class Ghost extends Organism {
-    String description;                                                                                                        
+public class Pax extends Organism {
+    String description;
     public String getDescription()
     {
         return this.description;

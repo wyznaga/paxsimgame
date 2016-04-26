@@ -3,6 +3,7 @@ import java.awt.Point;
 public class WorldGrid {
     int ht; // grid height
     int wd; // grid width
+    
 
     public WorldGrid(int height, int width)
     {
