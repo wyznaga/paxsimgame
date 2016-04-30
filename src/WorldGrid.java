@@ -38,7 +38,7 @@ public class WorldGrid {
         return this.timeDelay;
     }
     
-    public void populate()
+    public void populate(int cGIn, int gGIn, int sGIn, int cPIn, int gPIn)
     {
         
     }

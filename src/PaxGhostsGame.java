@@ -156,10 +156,10 @@ public class PaxGhostsGame extends JFrame {
             int gestationGhost = Integer.valueOf(ghostGestationPeriod.getText());
             int starvationGhost = Integer.valueOf(ghostStarvationPeriod.getText());
             
-            int countGhost = Integer.valueOf(paxCount.getText());
-            int gestationGhost = Integer.valueOf(paxGestationPeriod.getText());
+            int countPax = Integer.valueOf(paxCount.getText());
+            int gestationPax = Integer.valueOf(paxGestationPeriod.getText());
             
-            world.populate();
+            world.populate(countGhost, gestationGhost, starvationGhost, countPax, gestationPax);
         }
         catch (Exception ex) {
             JOptionPane.showMessageDialog(thisFrame, ex.getMessage());
