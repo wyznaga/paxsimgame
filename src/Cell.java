@@ -8,6 +8,9 @@ public class Cell {
         EMPTY, GHOST, PAX
     }
 
+    public boolean willBePopulated;
+    public int timer;
+
     State currentState;
 
     public Cell()
@@ -20,7 +23,6 @@ public class Cell {
         this.location.x = xLoc;
         this.location.y = yLoc;
     }
-
     public Point getLocation()
     {
         return new Point(this.location);
@@ -32,5 +34,21 @@ public class Cell {
     public State getState()
     {
         return this.currentState;
+    }
+    public void setWillBePopulated(boolean inWillBool)
+    {
+        this.willBePopulated = inWillBool;
+    }
+    public bool getWillBePopulated()
+    {
+        return this.willBePopulated;
+    }
+    public void setTimer(int timerIn)
+    {
+        this.timer = timerIn;
+    }
+    public int getTimer()
+    {
+        return this.timer;
     }
 }

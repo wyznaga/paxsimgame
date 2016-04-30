@@ -9,7 +9,7 @@
             i. iterate 0 through count-1
                 1. pick Random point from (0,0) to (99, 99) inclusive
                     a. if point is empty, place organism there
-                    b. if not empty, pick new Random point and go back to a.
+                    b. if not empty, pick new Random point and go back to 1.
                 2. take gestationPax integer value and set it for the file's use
         c. Ghost loop:
             i. iterate 0 through count-1
@@ -52,10 +52,10 @@
                             1. set, in another grid of Cell instances:
                                 a. that location's cell's willBePopulated to true
                                 b. and a integer for countdown
-    4. Check to see if any of the instances in that other grid have willBePopulated as true
-        i. and that the countdown is 0
-        ii. If so, populate original grid appropriately
-            a. if there are any space conflicts, just don't populate and animate those
-    5. Check to see if populate values changed
+        b. Check to see if any of the instances in that other grid have willBePopulated as true
+            i. and that the countdown is 0
+            ii. If so, populate original grid appropriately
+                a. if there are any space conflicts, just don't populate and animate those
+    4. Check to see if populate values changed
         i. If so, reset WorldGrid and repopulate (outline step 2.)
         ii. If not, continue simulating (that is, do another step of 3.)

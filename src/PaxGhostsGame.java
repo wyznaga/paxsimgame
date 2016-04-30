@@ -5,10 +5,14 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.awt.Dimension;
+import javax.awt.Graphics;
+import javax.awt.Image;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -51,6 +55,8 @@ public class PaxGhostsGame extends JFrame {
         {
             if (world.isRunning)
             {
+                game.populate();
+                world.simulate();
                 game.loop();
             }
             else if (!(world.isRunning))
@@ -64,11 +70,17 @@ public class PaxGhostsGame extends JFrame {
     {
         while (world.isRunning)
         {
-            
+            /* if populate() values changed,
+             reset grid, then break loop to
+             game.populate again
+             in the main() while loop */
+            /* else if populate() values have not changed,
+             simulate one more step and return to beginning of
+             this loop */
         }
     }
     
-      try {
+     try {
         UIManager.setLookAndFeel(
             UIManager.getSystemLookAndFeelClassName());
     } 
@@ -80,6 +92,33 @@ public class PaxGhostsGame extends JFrame {
     }
     catch (IllegalAccessException e) {
     }
+
+    ImagePanel panel = new ImagePanel(new ImageIcon("BGP.jpg").getImage());
+        JFrame frame = new JFrame();
+    frame.getContentPane().add(panel);
+    frame.pack();
+    frame.setVisible(true);
+        
+        class ImagePanel extends JPanel {
+        private Image img;
+        public ImagePanel(String img) {
+            this(new ImageIcon(img).getImage());
+        }
+
+        public ImagePanel(Image img) {
+            this.img = img;
+            Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
+            setPreferredSize(size);
+            setMinimumSize(size);
+            setMaximumSize(size);
+            setSize(size);
+            setLayout(null);
+        }
+        
+        public void paintComponent(Graphics g) {
+            g.drawImage(img, 0, 0, null);
+            }
+        }
 
     public PaxGhostsGame() {
         thisFrame = this;
@@ -132,7 +171,7 @@ public class PaxGhostsGame extends JFrame {
         world.addObserver(display);
         
         pack();
-        this.setSize(550, 800);
+        this.setSize(640, 640);
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
