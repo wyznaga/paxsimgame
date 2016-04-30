@@ -40,18 +40,18 @@ public class Pax extends Organism {
             switch (i) {
                 case 0:
                     this.north.x = this.location.x;
-                    this.north.y = ((this.location + 1)%100);
+                    this.north.y = ((this.location + 1)%99);
                     break;
                 case 1:
-                    this.east.x = ((this.location.x + 1)%100);
+                    this.east.x = ((this.location.x + 1)%99);
                     this.east.y = this.location.y;
                     break;
                 case 2:
                     this.south.x = this.location.x;
-                    this.south.y = ((this.location - 1)%100);
+                    this.south.y = ((this.location - 1)%99);
                     break;
                 case 3:
-                    this.west.x = ((this.location.x - 1)%100);
+                    this.west.x = ((this.location.x - 1)%99);
                     this.west.y = this.location.y;
                     break;
             }
@@ -102,7 +102,7 @@ public class Pax extends Organism {
                     this.currentMovement = NORTH;
                     this.currentState = MOVE;
                     this.location = (north.x, north.y);
-                    if ((lifetime >= 5) && (lifetime % 5 == 0)) {
+                    if ((lifetime >= 5) && (lifetime % 5 == 0)) { // need to change these numbers
                         this.willReproduce = true;
                     }
                     this.lifetime++;

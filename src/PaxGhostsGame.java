@@ -25,8 +25,8 @@ public class PaxGhostsGame extends JFrame {
     private Display display = new Display();
     private JPanel controlPanel = new JPanel();
     private JPanel statisticsPanel = new JPanel();
-    private JPanel sharkPanel = new JPanel();
-    private JPanel fishPanel = new JPanel();
+    private JPanel ghostPanel = new JPanel();
+    private JPanel paxPanel = new JPanel();
     private JPanel runPanel = new JPanel();
     private JPanel speedControlPanel = new JPanel();
     private JPanel buttonPanel = new JPanel();
@@ -49,8 +49,27 @@ public class PaxGhostsGame extends JFrame {
     
     public static void main(String[] args) {
         PaxGhostsGame game = new PaxGhostsGame();
+        game.loop();
     }
     
+    public void loop()
+    {
+        
+    }
+    
+      try {
+        UIManager.setLookAndFeel(
+            UIManager.getSystemLookAndFeelClassName());
+    } 
+    catch (UnsupportedLookAndFeelException e) {
+    }
+    catch (ClassNotFoundException e) {
+    }
+    catch (InstantiationException e) {
+    }
+    catch (IllegalAccessException e) {
+    }
+
     public PaxGhostsGame() {
         thisFrame = this;
         
@@ -80,9 +99,7 @@ public class PaxGhostsGame extends JFrame {
         paxPanel.add(paxCount);
         paxPanel.add(new JLabel("Gestation period:"));
         paxPanel.add(paxGestationPeriod);
-        // paxPanel.add(new JLabel("Starvation period:"));
-        // paxPanel.add(paxStarvationPeriod);
-        
+   
         runPanel.setLayout(new BorderLayout());
         runPanel.add(speedControlPanel, BorderLayout.CENTER);
         runPanel.add(buttonPanel, BorderLayout.EAST);
@@ -118,8 +135,7 @@ public class PaxGhostsGame extends JFrame {
 
             		JOptionPane.showMessageDialog(thisFrame, "Ghost gestation period allowed should be greater than Ghost starvation enforced.");
             	}
-            	else {s
-            		
+            	else {
             		populate();
             	}
                 display.repaint();

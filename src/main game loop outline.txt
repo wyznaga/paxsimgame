@@ -1,0 +1,59 @@
+## Main game loop initiated by PaxGhostsGame:
+    1. PaxGhostsGame.populate() method:
+        a. Get both counts
+        b. Get goth gestation period counts
+        c. Get stavation count for Ghost instance
+    2. All passed to WorldGrid.populate() :
+        a. two loops: Pax and Ghost
+        b. Pax loop:
+            i. iterate 0 through count-1
+                1. pick Random point from (0,0) to (99, 99) inclusive
+                    a. if point is empty, place organism there
+                    b. if not empty, pick new Random point and go back to 2.
+                2. take gestationPax integer value and set it for the file's use
+        c. Ghost loop:
+            i. iterate 0 through count-1
+                1. pick Random point from (0,0) to (99, 99) inclusive
+                    a. if point is empty, place organism there
+                    b. if not empty, pick new Random point and go back to 2.
+                2. take gestationGhost integer value and set it for the file's use
+                3. take starvationGhost integer value and set it for the file's use
+    3. When populate is finished, simulate one step
+        a. Simulation proceeds in loop through grid:
+            i. Grid iterated through from (0,0) to (99,99) :
+                1. each column after another; then each row in each column, from bottom to top
+                2. organism simulated:
+                    a. if Pax:
+                        i. if both Pax and Ghost have same current location:
+                            1. change Pax currentState to die
+                            2. unpaint Pax pixel
+                            3. have Ghost pixel painted at location
+                        ii. .simulate() is called
+                        iii. if both currentMovement is not STATIC and currentState is MOVE:
+                            1. then animate direction movement; that is, pixel repainting
+                                a. at new location (.getLocation)
+                        iv. else if currentMovement is STATIC and currentState is LIVE:
+                            1. simply keep pixel painted at location
+                        v. if willReproduce is true, then:
+                            1. set, in another grid of Cell instances:
+                                a. that location's cell's willBePopulated to true
+                    b. if Ghost:
+                        i. if both Ghost and Pax have same current location:
+                            1. just make sure that Ghost pixel is painted there
+                        ii. .simulate() is called
+                        iii. if willDie is true, then de-animate pixel and:
+                            1. set cell at that location to EMPTY
+                        iv. if both currentMovement is not STATIC and currentState is MOVE:
+                            1. then animate direction movement; that is, pixel repainting
+                                a. at new location (.getLocation)
+                        v. else if currentMovement is STATIC and currentState is LIVE:
+                            1. simply keep pixel painted at location
+                        vi. if willReproduce is true, then:
+                            1. set, in another grid of Cell instances:
+                                a. that location's cell's willBePopulated to true
+    4. Check to see if any of the instances in that other grid have willBePopulated as true
+        i. If so, populate original grid appropriately
+            a. if there are any space conflicts, just don't populate and animate those
+    5. Check to see if populate values changed
+        i. If so, reset WorldGrid and repopulate (outline step 2.)
+        ii. If not, continue simulating (that is, do another step of 3.)

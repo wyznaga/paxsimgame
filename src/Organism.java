@@ -9,8 +9,6 @@ public class Organism {
     public Point west = new Point();
     int lifetime;
     boolean willReproduce;
-    boolean willTire;
-    boolean willEat;
     boolean willDie;
     public enum State {
         MOVE, LIVE, DIE
@@ -82,22 +80,6 @@ public class Organism {
     {
         this.willReproduce = inBool;
     }
-    public boolean getWillEat()
-    {
-        return this.willEat;
-    }
-    public void setWillEat(boolean inBool)
-    {
-        this.willEat = inBool;
-    }
-    public boolean getWillTire()
-    {
-        return this.willReproduce;
-    }
-    public void setWillTire(boolean inBool)
-    {
-        this.willTire = inBool;
-    }
     public boolean getWillDie()
     {
         return this.willDie;
@@ -105,5 +87,13 @@ public class Organism {
     public void setWillDie(boolean inBool)
     {
         this.willDie = inBool;
+    }
+    public int getLocation()
+    {
+        return this.location;
+    }
+    public void setLocation(Point inLoc)
+    {
+        this.location = inLoc;
     }
 }
