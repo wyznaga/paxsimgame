@@ -26,11 +26,24 @@ public class Ghost extends Organism {
     int gestationGhost;
     boolean fishSeen;
     
-    public Pax (Cell[][] gridOn, int inGest, int inStarve)
+    public Pax (Cell[][] gridOn, int inGest, int inStarve) // add getters and setters
     {
         this.myGrid = gridOn;
         this.gestationGhost = inGest;
         this.energy = inStarve;
+    }
+
+    public int getGestation()
+    {
+        return this.gestationGhost;
+    }
+    public void setGestation(int inGest)
+    {
+        this.gestationGhost = inGest
+    }
+    public int getStarvation()
+    {
+        return this.energy;
     }
 
     public void simulate()

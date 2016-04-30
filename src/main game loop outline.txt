@@ -51,8 +51,10 @@
                         vi. if willReproduce is true, then:
                             1. set, in another grid of Cell instances:
                                 a. that location's cell's willBePopulated to true
+                                b. and a integer for countdown
     4. Check to see if any of the instances in that other grid have willBePopulated as true
-        i. If so, populate original grid appropriately
+        i. and that the countdown is 0
+        ii. If so, populate original grid appropriately
             a. if there are any space conflicts, just don't populate and animate those
     5. Check to see if populate values changed
         i. If so, reset WorldGrid and repopulate (outline step 2.)

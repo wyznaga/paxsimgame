@@ -21,10 +21,21 @@ public class Pax extends Organism {
     int sIndex2;
     int wIndex;
     int wIndex2;
+    int gestationPax;
 
-    public Pax (Cell[][] gridOn)
+    public Pax (Cell[][] gridOn, int inGest)
     {
         this.myGrid = gridOn;
+        this.gestationPax = inGest;
+    }
+
+    public int getGestation()
+    {
+        return this.gestationPax;
+    }
+    public void setGestation(int inGest)
+    {
+        this.gestationPax = inGest;
     }
 
     public void simulate()
@@ -102,7 +113,7 @@ public class Pax extends Organism {
                     this.currentMovement = NORTH;
                     this.currentState = MOVE;
                     this.location = (north.x, north.y);
-                    if ((lifetime >= 5) && (lifetime % 5 == 0)) { // need to change these numbers
+                    if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) { // need to change these numbers
                         this.willReproduce = true;
                     }
                     this.lifetime++;
@@ -118,7 +129,7 @@ public class Pax extends Organism {
                     this.currentMovement = EAST;
                     this.currentState = MOVE;
                     this.location = (east.x, east.y);
-                    if ((lifetime >= 5) && (lifetime % 5 == 0)) {
+                    if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) {
                         this.willReproduce = true;
                     }
                     this.lifetime++;
@@ -134,7 +145,7 @@ public class Pax extends Organism {
                     this.currentMovement = SOUTH;
                     this.currentState = MOVE;
                     this.location = (south.x, south.y);
-                    if ((lifetime >= 5) && (lifetime % 5 == 0)) {
+                    if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) {
                         this.willReproduce = true;
                     }
                     this.lifetime++;
@@ -150,7 +161,7 @@ public class Pax extends Organism {
                     this.currentMovement = WEST;
                     this.currentState = MOVE;
                     this.location = (west.x, west.y);
-                    if ((lifetime >= 5) && (lifetime % 5 == 0)) {
+                    if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) {
                         this.willReproduce = true;
                     }
                     this.lifetime++;
