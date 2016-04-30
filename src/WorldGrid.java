@@ -15,5 +15,7 @@ public class WorldGrid {
                 createdGrid[row][column].location.y = (2 - row);
             }
         }
+        
+        
     }
 }

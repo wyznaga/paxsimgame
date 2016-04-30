@@ -29,6 +29,12 @@ public class Pax extends Organism {
 
     public void simulate()
     {
+        if (this.currentState = DIE)
+        {
+            this.currentMovement = STATIC;
+            this.location = (-1,-1);
+        }
+        
         for (int i = 0; i < 4; i++)
         {
             switch (i) {
@@ -99,10 +105,12 @@ public class Pax extends Organism {
                     if ((lifetime >= 5) && (lifetime % 5 == 0)) {
                         this.willReproduce = true;
                     }
+                    this.lifetime++;
                 }
                 else {
                     this.currentMovement = STATIC;
                     this.currentState = LIVE;
+                    this.lifetime++;
                 }
                 break;
             case 1:
@@ -113,10 +121,12 @@ public class Pax extends Organism {
                     if ((lifetime >= 5) && (lifetime % 5 == 0)) {
                         this.willReproduce = true;
                     }
+                    this.lifetime++;
                 }
                 else {
                     this.currentMovement = STATIC;
                     this.currentState = LIVE;
+                    this.lifetime++;
                 }
                 break;
             case 2:
@@ -127,10 +137,12 @@ public class Pax extends Organism {
                     if ((lifetime >= 5) && (lifetime % 5 == 0)) {
                         this.willReproduce = true;
                     }
+                    this.lifetime++;
                 }
                 else {
                     this.currentMovement = STATIC;
                     this.currentState = LIVE;
+                    this.lifetime++;
                 }
                 break;
             case 3:
@@ -141,10 +153,12 @@ public class Pax extends Organism {
                     if ((lifetime >= 5) && (lifetime % 5 == 0)) {
                         this.willReproduce = true;
                     }
+                    this.lifetime++;
                 }
                 else {
                     this.currentMovement = STATIC;
                     this.currentState = LIVE;
+                    this.lifetime++;
                 }
                 break;
         }

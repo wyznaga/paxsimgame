@@ -32,6 +32,12 @@ public class Ghost extends Organism {
 
     public void simulate()
     {
+        if (this.currentState = DIE)
+        {
+            this.currentMovement = STATIC;
+            this.location = (-1,-1);
+        }
+        
         for (int i = 0; i < 4; i++)
         {
             switch (i) {
@@ -103,6 +109,7 @@ public class Ghost extends Organism {
                         this.location = (north.x, north.y);
                         this.willReproduce = true;
                         this.fishSeen = true;
+                        this.energy++;
                     }
                     break;
                 case 1:
@@ -114,6 +121,7 @@ public class Ghost extends Organism {
                         this.location = (east.x, east.y);
                         this.willReproduce = true;
                         this.fishSeen = true;
+                        this.energy++;
                     }
                     break;
                 case 2:
@@ -125,6 +133,7 @@ public class Ghost extends Organism {
                         this.willEat = true;
                         this.willReproduce = true;
                         this.fishSeen = true;
+                        this.energy++;
                     }
                     break;
                 case 3:
@@ -136,6 +145,7 @@ public class Ghost extends Organism {
                         this.willEat = true;
                         this.willReproduce = true;
                         this.fishSeen = true;
+                        this.energy++;
                     }
                     break;
             }
