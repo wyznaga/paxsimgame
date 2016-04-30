@@ -1,4 +1,5 @@
 import java.awt.Point;
+impot java.util.Random;
 
 public class WorldGrid {
     int ht; // grid height
@@ -17,8 +18,6 @@ public class WorldGrid {
                 createdGrid[row][column].location.y = (2 - row);
             }
         }
-        
-        
     }
     
     public void setRunning(boolean inBool)
@@ -38,8 +37,26 @@ public class WorldGrid {
         return this.timeDelay;
     }
     
-    public void populate(int cGIn, int gGIn, int sGIn, int cPIn, int gPIn)
+    public void populate(int countGhostIn, int gestGhostIn, int starveGhostIn, int countPaxIn, int gestPaxIn)
     {
-        
+        for (int i = 0; i < countPaxIn; i++)
+        {
+            Random randomPaxPointX = new Random();
+            int paxPointX = randomPaxPointX.nextInt(wd);
+            int paxPointY = randomPaxPointX.nextInt(ht);
+            Point paxPointPlace = new Point(paxPointX, paxPointY);
+            if (createdGrid[((this.wd-1)-paxPointX)][((this.ht-1)-paxPointY)].getState == EMPTY)
+            {
+                
+            }
+            else
+            {
+                
+            }
+        }
+        for (int j = 0; j < countGhostIn; j++)
+        {
+            
+        }
     }
 }

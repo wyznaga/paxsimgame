@@ -1,7 +1,5 @@
 // Property of B3r5t Team: Jacob Sarver-Verhey & William Yznaga - 4/26/2016
 
-package paxGhostsGame;
-
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -33,12 +31,12 @@ public class PaxGhostsGame extends JFrame {
     private JSlider speedControl = new JSlider(SwingConstants.HORIZONTAL, 0, 100, 100);
     private JButton runButton = new JButton("Run");
     private JButton populateButton = new JButton("Populate");
-    private JTextField ghostCount = new JTextField("1");
-    private JTextField paxCount = new JTextField("5000");
+    private JTextField ghostCount = new JTextField("100");
+    private JTextField paxCount = new JTextField("500");
     
-    private JTextField ghostGestationPeriod = new JTextField("200");
-    private JTextField paxGestationPeriod = new JTextField("10");
-    private JTextField ghostStarvationPeriod = new JTextField("150");
+    private JTextField ghostGestationPeriod = new JTextField("3");
+    private JTextField paxGestationPeriod = new JTextField("5");
+    private JTextField ghostStarvationPeriod = new JTextField("8");
     private TitledBorder ghostBorder = new TitledBorder("Ghosts");
     private TitledBorder paxBorder = new TitledBorder("Pax");
     
@@ -49,12 +47,25 @@ public class PaxGhostsGame extends JFrame {
     
     public static void main(String[] args) {
         PaxGhostsGame game = new PaxGhostsGame();
-        game.loop();
+        while (true)
+        {
+            if (world.isRunning)
+            {
+                game.loop();
+            }
+            else if (!(world.isRunning))
+            {
+                continue;
+            }
+        }
     }
     
     public void loop()
     {
-        
+        while (world.isRunning)
+        {
+            
+        }
     }
     
       try {
@@ -147,7 +158,6 @@ public class PaxGhostsGame extends JFrame {
                 running = !running;
                 runButton.setText(running ? "Stop" : "Run");
                 world.setRunning(running);
-                
             }      
         });
         speedControl.addChangeListener(new ChangeListener() {

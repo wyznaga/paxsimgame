@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Random;
 
 public class Pax extends Organism {
     String description;

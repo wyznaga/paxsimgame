@@ -10,6 +10,11 @@ public class Cell {
 
     State currentState;
 
+    public Cell()
+    {
+        this.currentState = EMPTY;
+    }
+
     public void setLocation(int xLoc, int yLoc)
     {
         this.location.x = xLoc;
@@ -19,5 +24,13 @@ public class Cell {
     public Point getLocation()
     {
         return new Point(this.location);
+    }
+    public void setState(State inState)
+    {
+        this.currentState = inState;
+    }
+    public State getState()
+    {
+        return this.currentState;
     }
 }
