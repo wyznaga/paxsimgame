@@ -47,6 +47,10 @@ public class PaxGhostsGame extends JFrame {
     private WorldGrid world;
     private boolean running = false;
     
+    public static void main(String[] args) {
+        PaxGhostsGame game = new PaxGhostsGame();
+    }
+    
     public PaxGhostsGame() {
         thisFrame = this;
         
@@ -105,11 +109,6 @@ public class PaxGhostsGame extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-
-    public static void main(String[] args) {
-        new PaxGhostsGame();
-    }
-
     private void attachListeners() {
         populateButton.addActionListener(new ActionListener() {
         	
@@ -153,14 +152,12 @@ public class PaxGhostsGame extends JFrame {
 
     private void populate() {
         try {
-            int count = Integer.valueOf(ghostCount.getText());
-            int gestation = Integer.valueOf(ghostGestationPeriod.getText());
-            int starvation = Integer.valueOf(ghostStarvationPeriod.getText());
-            Parameters.setGhostStatistics(count, gestation, starvation);
+            int countGhost = Integer.valueOf(ghostCount.getText());
+            int gestationGhost = Integer.valueOf(ghostGestationPeriod.getText());
+            int starvationGhost = Integer.valueOf(ghostStarvationPeriod.getText());
             
-            count = Integer.valueOf(paxCount.getText());
-            gestation = Integer.valueOf(paxGestationPeriod.getText());
-            Parameters.setPaxStatistics(count, gestation, starvation);
+            int countGhost = Integer.valueOf(paxCount.getText());
+            int gestationGhost = Integer.valueOf(paxGestationPeriod.getText());
             
             world.populate();
         }

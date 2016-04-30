@@ -22,12 +22,15 @@ public class Ghost extends Organism {
     int sIndex2;
     int wIndex;
     int wIndex2;
-    int energy = 10;
+    int energy;
+    int gestationGhost;
     boolean fishSeen;
     
-    public Pax (Cell[][] gridOn)
+    public Pax (Cell[][] gridOn, int inGest, int inStarve)
     {
         this.myGrid = gridOn;
+        this.gestationGhost = inGest;
+        this.energy = inStarve;
     }
 
     public void simulate()

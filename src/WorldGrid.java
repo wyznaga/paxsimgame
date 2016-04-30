@@ -3,6 +3,8 @@ import java.awt.Point;
 public class WorldGrid {
     int ht; // grid height
     int wd; // grid width
+    boolean isRunning;
+    int timeDelay = 50;
 
     public WorldGrid(int height, int width)
     {
@@ -16,6 +18,28 @@ public class WorldGrid {
             }
         }
         
+        
+    }
+    
+    public void setRunning(boolean inBool)
+    {
+        this.isRunning = inBool;
+    }
+    public boolean getRunning()
+    {
+        return this.isRunning;
+    }
+    public void setDelay(int inInt)
+    {
+        this.timeDelay = inInt;
+    }
+    public int getDelay()
+    {
+        return this.timeDelay;
+    }
+    
+    public void populate()
+    {
         
     }
 }
