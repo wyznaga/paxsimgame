@@ -94,10 +94,10 @@ public class WorldGrid {
     
     public void simulate()
     {
-        for (int row = 0; row < ht; row++) {
-            for (int column = 0; column < wd; column++) {
-                createdGrid[row][column].location.x = column;
-                createdGrid[row][column].location.y = (2 - row);
+        for (int row = 0; row < this.ht; row++) {
+            for (int column = 0; column < this.wd; column++) {
+                //createdGrid[row][column] x-coordinate is column;
+                //createdGrid[row][column] y-coordinate is (this.ht - row);
             }
         }
     }
