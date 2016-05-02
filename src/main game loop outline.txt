@@ -22,40 +22,40 @@
         a. Simulation proceeds in loop through grid:
             i. Grid iterated through from (0,0) to (99,99) :
                 1. each column after another; then each row in each column, from bottom to top
-                2. organism simulated:
-                    a. if Pax:
-                        i. if both Pax and Ghost have same current location:
-                            1. change Pax currentState to die
-                            2. unpaint Pax pixel
-                            3. have Ghost pixel painted at location
-                        ii. .simulate() is called
-                        iii. if both currentMovement is not STATIC and currentState is MOVE:
-                            1. then animate direction movement; that is, pixel repainting
-                                a. at new location (.getLocation)
-                        iv. else if currentMovement is STATIC and currentState is LIVE:
-                            1. simply keep pixel painted at location
-                        v. if willReproduce is true, then:
-                            1. set, in another grid of Cell instances:
-                                a. that location's cell's willBePopulated to true
-                    b. if Ghost:
-                        i. if both Ghost and Pax have same current location:
-                            1. just make sure that Ghost pixel is painted there
-                        ii. .simulate() is called
-                        iii. if willDie is true, then de-animate pixel and:
-                            1. set cell at that location to EMPTY
-                        iv. if both currentMovement is not STATIC and currentState is MOVE:
-                            1. then animate direction movement; that is, pixel repainting
-                                a. at new location (.getLocation)
-                        v. else if currentMovement is STATIC and currentState is LIVE:
-                            1. simply keep pixel painted at location
-                        vi. if willReproduce is true, then:
-                            1. set, in another grid of Cell instances:
-                                a. that location's cell's willBePopulated to true
-                                b. and a integer for countdown
+            ii. organism simulated:
+                1. if Pax:
+                    a. if both Pax and Ghost have same current location:
+                        i. change Pax currentState to die
+                        ii. unpaint Pax pixel
+                        iii. have Ghost pixel painted at location
+                    b. .simulate() is called
+                    c. if both currentMovement is not STATIC and currentState is MOVE:
+                        i. then animate direction movement; that is, pixel repainting
+                            1. at new location (.getLocation)
+                    d. else if currentMovement is STATIC and currentState is LIVE:
+                        i. simply keep pixel painted at location
+                    e. if willReproduce is true, then:
+                        i. set, in another grid of Cell instances:
+                            1. that location's cell's willBePopulated to true
+                2. if Ghost:
+                    a. if both Ghost and Pax have same current location:
+                        i. just make sure that Ghost pixel is painted there
+                    b. .simulate() is called
+                    c. if willDie is true, then de-animate pixel and:
+                        i. set cell at that location to EMPTY
+                    d. if both currentMovement is not STATIC and currentState is MOVE:
+                        i. then animate direction movement; that is, pixel repainting
+                            1. at new location (.getLocation)
+                    e. else if currentMovement is STATIC and currentState is LIVE:
+                        i. simply keep pixel painted at location
+                    f. if willReproduce is true, then:
+                        i. set, in another grid of Cell instances:
+                            1. that location's cell's willBePopulated to true
+                            2. and a integer for countdown
         b. Check to see if any of the instances in that other grid have willBePopulated as true
             i. and that the countdown is 0
             ii. If so, populate original grid appropriately
-                a. if there are any space conflicts, just don't populate and animate those
+                1. if there are any space conflicts, just don't populate and animate those
     4. Check to see if populate values changed
-        i. If so, reset WorldGrid and repopulate (outline step 2.)
-        ii. If not, continue simulating (that is, do another step of 3.)
+        a. If so, reset WorldGrid and repopulate (outline step 2.)
+        b. If not, continue simulating (that is, do another step of 3.)

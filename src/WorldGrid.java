@@ -96,8 +96,9 @@ public class WorldGrid {
     {
         for (int row = 0; row < this.ht; row++) {
             for (int column = 0; column < this.wd; column++) {
-                //createdGrid[row][column] x-coordinate is column;
-                //createdGrid[row][column] y-coordinate is (this.ht - row);
+                // createdGrid[row][column] x-coordinate is column;
+                // createdGrid[row][column] y-coordinate is (this.ht - row);
+                
             }
         }
     }
