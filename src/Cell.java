@@ -8,7 +8,12 @@ public class Cell {
         EMPTY, GHOST, PAX
     }
 
-    public boolean willBePopulated;
+    public boolean willBePopulated = false;
+    public boolean willHavePax = false;
+    public boolean willHaveGhost = false;
+    public boolean hadPax = false;
+    public boolean hadGhost = false;
+    public boolean stayPainted = false;
     public int timer;
 
     State currentState;
@@ -39,9 +44,49 @@ public class Cell {
     {
         this.willBePopulated = inWillBool;
     }
-    public bool getWillBePopulated()
+    public boolean getWillBePopulated()
     {
         return this.willBePopulated;
+    }
+    public void setWillHavePax(boolean inWillBool)
+    {
+        this.willHavePax = inWillBool;
+    }
+    public boolean getWillHavePax()
+    {
+        return this.willHavePax;
+    }
+    public void setWillHaveGhost(boolean inWillBool)
+    {
+        this.willHaveGhost = inWillBool;
+    }
+    public boolean getWillHaveGhost()
+    {
+        return this.willHaveGhost;
+    }
+    public void setHadGhost(boolean inHadBool)
+    {
+        this.hadGhost = inHadBool;
+    }
+    public boolean getHadGhost()
+    {
+        return this.hadGhost;
+    }
+    public void setHadPax(boolean inHadBool)
+    {
+        this.hadPax = inHadBool;
+    }
+    public boolean getHadPax()
+    {
+        return this.hadPax;
+    }
+    public boolean getStayPainted()
+    {
+        return this.stayPainted;
+    }
+    public void setStayPainted(boolean stayBool)
+    {
+        this.stayPainted = stayBool;
     }
     public void setTimer(int timerIn)
     {

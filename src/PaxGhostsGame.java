@@ -1,6 +1,6 @@
 // Property of B3r5t Team: Jacob Sarver-Verhey & William Yznaga - 4/26/2016
 
-impot java.awt.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,20 +11,6 @@ import javax.swing.event.ChangeListener;
 
 public class PaxGhostsGame extends JFrame {
     private static final long serialVersionUID = 1L;
-    private class DisplayCanvas {
-        public DisplayCanvas() {
-            setBackground(Color.BLACK);
-            setSize(WORLD_SIZE, WORLD_SIZE);
-        }
-        public void paint(Graphics gPaint)
-        {
-            Graphics2D gPaint2 = (Graphics2D) gPaint;
-        }
-        public void repaint(Graphics gRepaint)
-        {
-            Graphcis2D gRepaint2 = (Graphics2D) gPaint;
-        }
-    }
     private JPanel controlPanel = new JPanel();
     private JPanel statisticsPanel = new JPanel();
     private JPanel ghostPanel = new JPanel();
@@ -45,6 +31,7 @@ public class PaxGhostsGame extends JFrame {
     private TitledBorder paxBorder = new TitledBorder("Pax");
     
     private final static int WORLD_SIZE = 100;
+
     private WorldGrid world;
     private boolean running = false;
     
@@ -79,13 +66,16 @@ public class PaxGhostsGame extends JFrame {
         }
     }
         
-    class ImagePanel extends JPanel {
+    class ImagePanel extends JPanel
+    {
         private Image img;
-        public ImagePanel(String img) {
+        public ImagePanel(String img)
+        {
             this(new ImageIcon(img).getImage());
         }
     
-        public ImagePanel(Image img) {
+        public ImagePanel(Image img)
+        {
             this.img = img;
             Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
             setPreferredSize(size);
@@ -95,12 +85,14 @@ public class PaxGhostsGame extends JFrame {
             setLayout(null);
         }
         
-        public void paintComponent(Graphics g) {
+        public void paintComponent(Graphics g)
+        {
             g.drawImage(img, 0, 0, null);
         }
     }
 
-    public PaxGhostsGame() {
+    public PaxGhostsGame()
+    {
         thisFrame = this;
         
         try {
@@ -116,7 +108,6 @@ public class PaxGhostsGame extends JFrame {
         }
         
         this.setLayout(new BorderLayout());
-        this.add(display, BorderLayout.CENTER);
         ImagePanel panelBGImage = new ImagePanel(new ImageIcon("BGP.jpg").getImage());
         thisFrame.getContentPane().add(panelBGImage);
         this.add(controlPanel, BorderLayout.SOUTH);
@@ -133,15 +124,15 @@ public class PaxGhostsGame extends JFrame {
         ghostPanel.setBorder(sharkBorder);
         ghostPanel.add(new JLabel("Initial number:"));
         ghostPanel.add(ghostCount);
-        ghostPanel.add(new JLabel("Gestation period:"));
+        ghostPanel.add(new JLabel("Time to Reproduce:"));
         ghostPanel.add(ghostGestationPeriod);
-        ghostPanel.add(new JLabel("Starvation period:"));
+        ghostPanel.add(new JLabel("Time to Starve:"));
         ghostPanel.add(ghostStarvationPeriod);
         
         paxPanel.setBorder(paxBorder);
         paxPanel.add(new JLabel("Initial number:"));
         paxPanel.add(paxCount);
-        paxPanel.add(new JLabel("Gestation period:"));
+        paxPanel.add(new JLabel("Time to Reproduce:"));
         paxPanel.add(paxGestationPeriod);
    
         runPanel.setLayout(new BorderLayout());
@@ -160,9 +151,44 @@ public class PaxGhostsGame extends JFrame {
         speedControl.setValueIsAdjusting(true);
         
         world = new WorldGrid(WORLD_SIZE, WORLD_SIZE);
-        //display.setWorld(world);
+        
+        public class OurPixelCanvas extends Canvas
+        {
+            private static final int WIDTH = WORLD_SIZE;
+            private static final int HEIGHT = WORLD_SIZE;
+        
+            @Override
+            public void paint(Graphics g)
+            {
+                super.paint(g);
+        
+                for(int y = HEIGHT; y > 0; y--)
+                {
+                    for(int x = 0; x < WIDTH; x++)
+                    {
+                        g.setColor(randomColor());
+                        g.drawLine(x, y, x, y);
+                    }
+                }
+            }
+
+            public static void main(String[] args) {
+                JFrame frame = new JFrame();
+
+                frame.setSize(WIDTH, HEIGHT);
+                frame.add(new PixelCanvas());
+
+                frame.setVisible(true);
+            }
+        }
+
+        OurPixelCanvas display = new OurPixelCanvas();
+        
+        this.add(display, BorderLayout.CENTER);
+
+        //display.setWorld(world); nor this
         attachListeners();
-        //world.addObserver(display);
+        //world.addObserver(display); nor this
         
         this.pack();
         this.setSize(640, 640);
@@ -177,7 +203,7 @@ public class PaxGhostsGame extends JFrame {
             public void actionPerformed(ActionEvent e) {
             	if (Integer.parseInt(ghostStarvationPeriod.getText()) >= Integer.parseInt(ghostGestationPeriod.getText())) {
 
-            		JOptionPane.showMessageDialog(thisFrame, "Ghost gestation period allowed should be greater than Ghost starvation enforced.");
+            		JOptionPane.showMessageDialog(thisFrame, "Ghost time ot reproduce allowed should be greater than Ghost time to starve enforced.");
             	}
             	else {
             		populate();
@@ -201,7 +227,6 @@ public class PaxGhostsGame extends JFrame {
                 world.setDelay(delay);
                 world.setRunning(running);
             }
-            
         });
     }
     

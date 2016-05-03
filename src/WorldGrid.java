@@ -60,6 +60,8 @@ public class WorldGrid {
                     createdGrid[((this.wd-1)-paxPointX)][((this.ht-1)-paxPointY)].setState(PAX);
                     paxArr[i].setLocation(paxPointPlace);
                     this.gestPaxInGrid = gestPaxIn;
+                    paxArr[i].setGestation(this.gestPaxInGrid);
+                    createdGrid[((this.wd-1)-paxPointX)][((this.ht-1)-paxPointY)].setWillHavePax(true);
                     break;
                 }
                 else if (!(createdGrid[((this.wd-1)-paxPointX)][((this.ht-1)-paxPointY)].getState == EMPTY))
@@ -79,9 +81,12 @@ public class WorldGrid {
                 if (createdGrid[((this.wd-1)-ghostPointX)][((this.ht-1)-ghostPointY)].getState == EMPTY)
                 {
                     createdGrid[((this.wd-1)-ghostPointX)][((this.ht-1)-ghostPointY)].setState(PAX);
-                    ghostArr[i].setLocation(ghostPointPlace);
+                    ghostArr[j].setLocation(ghostPointPlace);
                     this.gestGhostInGrid = gestGhostIn;
                     this.starveGhostInGrid = starveGhostIn;
+                    ghostarr[j].setGestation(this.gestGhostInGrid);
+                    ghostArr[j].setStarvation(this.starveGhostInGrid);
+                    createdGrid[((this.wd-1)-ghostPointX)][((this.ht-1)-ghostPointY)].setWillHaveGhost(true);
                     break;
                 }
                 else if (!(createdGrid[((this.wd-1)-ghostPointX)][((this.ht-1)-ghostPointY)].getState == EMPTY))
@@ -94,11 +99,43 @@ public class WorldGrid {
     
     public void simulate()
     {
-        for (int row = 0; row < this.ht; row++) {
+        for (int row = ht; row > 0; row--) {
             for (int column = 0; column < this.wd; column++) {
-                // createdGrid[row][column] x-coordinate is column;
-                // createdGrid[row][column] y-coordinate is (this.ht - row);
-                
+                // createdGrid[row][column].location.x is column;
+                // createdGrid[row][column].location.y is (this.ht - row)
+                if (createdGrid[row][column].getState(PAX))
+                {
+                    if (createdGrid[row][column].getWillHavePax() && createdGrid[row][column].getWillHaveGhost())
+                    {
+                        createdGrid[row][column].setState(GHOST);
+                        createdGrid[row][column].setWillHaveGhost(true);
+                        createdGrid[row][column].setHadPax(true);
+                    }
+                    for (int i = 0; i < this.countPaxInGrid; i++)
+                    {
+                        paxArr[i].simulate();
+                        if(paxArr[i].getWillReproduce)
+                        {
+                            createdGrid[row][column].setWillBePopulated();
+                        }
+                    }
+                }
+                else if (createdGrid[row][column].getState == GHOST)
+                {
+                    for (int j = 0; j < this.countGhostInGrid; j++)
+                    {
+                        ghostArr[j].simulate();
+                        if(ghostArr[j].getWillReproduce)
+                        {
+                            createdGrid[row][column].setWillBePopulated();
+                            createdGrid[row][column].setTimer(this.gestGhostInGrid);
+                        }
+                    }
+                }
+                else
+                {
+                    continue;
+                }
             }
         }
     }

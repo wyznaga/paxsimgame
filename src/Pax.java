@@ -40,12 +40,6 @@ public class Pax extends Organism {
 
     public void simulate()
     {
-        if (this.currentState = DIE)
-        {
-            this.currentMovement = STATIC;
-            this.location = (-1,-1);
-        }
-        
         for (int i = 0; i < 4; i++)
         {
             switch (i) {

@@ -39,11 +39,15 @@ public class Ghost extends Organism {
     }
     public void setGestation(int inGest)
     {
-        this.gestationGhost = inGest
+        this.gestationGhost = inGest;
     }
     public int getStarvation()
     {
         return this.energy;
+    }
+    public void setStarvation(int inStarve)
+    {
+        this.energy = inStarve;
     }
 
     public void simulate()

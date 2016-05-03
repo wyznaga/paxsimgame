@@ -26,30 +26,30 @@
                 1. if Pax:
                     a. if both Pax and Ghost have same current location:
                         i. change Pax currentState to die
-                        ii. unpaint Pax pixel
-                        iii. have Ghost pixel painted at location
+                        ii. unpaint Pax pixel *IN PaxGhostsGame*
+                        iii. have Ghost pixel painted at location *IN PaxGhostsGame*
                     b. .simulate() is called
                     c. if both currentMovement is not STATIC and currentState is MOVE:
-                        i. then animate direction movement; that is, pixel repainting
+                        i. then animate direction movement; that is, pixel repainting *IN PaxGhostsGame*
                             1. at new location (.getLocation)
                     d. else if currentMovement is STATIC and currentState is LIVE:
-                        i. simply keep pixel painted at location
+                        i. ---simply keep pixel painted at location---
                     e. if willReproduce is true, then:
-                        i. set, in another grid of Cell instances:
+                        i. set, in grid of Cell instances:
                             1. that location's cell's willBePopulated to true
                 2. if Ghost:
                     a. if both Ghost and Pax have same current location:
-                        i. just make sure that Ghost pixel is painted there
+                        i. ---just make sure that Ghost pixel is painted there---
                     b. .simulate() is called
                     c. if willDie is true, then de-animate pixel and:
                         i. set cell at that location to EMPTY
                     d. if both currentMovement is not STATIC and currentState is MOVE:
-                        i. then animate direction movement; that is, pixel repainting
+                        i. then animate direction movement; that is, pixel repainting *IN PaxGhostsGame*
                             1. at new location (.getLocation)
                     e. else if currentMovement is STATIC and currentState is LIVE:
-                        i. simply keep pixel painted at location
+                        i. ---simply keep pixel painted at location---
                     f. if willReproduce is true, then:
-                        i. set, in another grid of Cell instances:
+                        i. set, in grid of Cell instances:
                             1. that location's cell's willBePopulated to true
                             2. and a integer for countdown
         b. Check to see if any of the instances in that other grid have willBePopulated as true
