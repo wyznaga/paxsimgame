@@ -1,8 +1,5 @@
 import java.awt.Point;
 import java.util.Random;
-import Cell;
-import Pax;
-import Ghost;
 
 public class WorldGrid {
     int ht; // grid height
@@ -106,11 +103,11 @@ public class WorldGrid {
             for (int column = 0; column < this.wd; column++) {
                 // createdGrid[row][column].location.x is column;
                 // createdGrid[row][column].location.y is (this.ht - row)
-                if (createdGrid[row][column].getState(PAX))
+                if (createdGrid[row][column].getState(State.PAX))
                 {
                     if (createdGrid[row][column].getWillHavePax() && createdGrid[row][column].getWillHaveGhost())
                     {
-                        createdGrid[row][column].setState(GHOST);
+                        createdGrid[row][column].setState(State.GHOST);
                         createdGrid[row][column].setWillHaveGhost(true);
                         createdGrid[row][column].setHadPax(true);
                     }
@@ -123,7 +120,7 @@ public class WorldGrid {
                         }
                     }
                 }
-                else if (createdGrid[row][column].getState == GHOST)
+                else if (createdGrid[row][column].getState == State.GHOST)
                 {
                     for (int j = 0; j < this.countGhostInGrid; j++)
                     {

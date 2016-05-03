@@ -146,7 +146,7 @@ public class Ghost extends Organism {
                         if (myGrid[nIndex][nIndex2].currentState == State.PAX)
                         {
                             this.currentMovement = Movement.SOUTH;
-                            this.currentState = State/MOVE;
+                            this.currentState = State.MOVE;
                             this.location = (south.x, south.y);
                             this.willEat = true;
                             this.willReproduce = true;
@@ -181,44 +181,44 @@ public class Ghost extends Organism {
                             this.energy--;
                         }
                         else {
-                            this.currentMovement = STATIC;
-                            this.currentState = LIVE;
+                            this.currentMovement = Movement.STATIC;
+                            this.currentState = State.LIVE;
                         }
                         break;
                     case 1:
                         if (myGrid[eIndex][eIndex2].currentState == State.EMPTY) {
-                            this.currentMovement = EAST;
-                            this.currentState = MOVE;
+                            this.currentMovement = Movement.EAST;
+                            this.currentState = State.MOVE;
                             this.location = (east.x, east.y);
                             this.energy--;
                         }
                         else {
-                            this.currentMovement = STATIC;
-                            this.currentState = LIVE;
+                            this.currentMovement = Movement.STATIC;
+                            this.currentState = State.LIVE;
                         }
                         break;
                     case 2:
                         if (myGrid[sIndex][sIndex2].currentState == State.EMPTY) {
-                            this.currentMovement = SOUTH;
-                            this.currentState = MOVE;
+                            this.currentMovement = Movement.SOUTH;
+                            this.currentState = State.MOVE;
                             this.location = (south.x, south.y);
                             this.energy--;
                         }
                         else {
-                            this.currentMovement = STATIC;
-                            this.currentState = LIVE;
+                            this.currentMovement = Movement.STATIC;
+                            this.currentState = State.LIVE;
                         }
                         break;
                     case 3:
                         if (myGrid[wIndex][wIndex2].currentState == State.EMPTY) {
-                            this.currentMovement = WEST;
-                            this.currentState = MOVE;
+                            this.currentMovement = Movement.WEST;
+                            this.currentState = State.MOVE;
                             this.location = (west.x, west.y);
                             this.energy--;
                         }
                         else {
-                            this.currentMovement = STATIC;
-                            this.currentState = LIVE;
+                            this.currentMovement = Movement.STATIC;
+                            this.currentState = State.LIVE;
                         }
                         break;
                 }

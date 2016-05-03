@@ -106,7 +106,8 @@ public class Pax extends Organism {
                 if (myGrid[nIndex][nIndex2].currentState == State.EMPTY) {
                     this.currentMovement = Movement.NORTH;
                     this.currentState = State.MOVE;
-                    this.location = (north.x, north.y);
+                    this.location.x = north.x;
+                    this.location.y = north.y;
                     if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) { // need to change these numbers
                         this.willReproduce = true;
                     }
@@ -122,7 +123,8 @@ public class Pax extends Organism {
                 if (myGrid[eIndex][eIndex2].currentState == State.EMPTY) {
                     this.currentMovement = Movement.EAST;
                     this.currentState = State.MOVE;
-                    this.location = (east.x, east.y);
+                    this.location.x = east.x;
+                    this.location.y = east.y;
                     if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) {
                         this.willReproduce = true;
                     }
@@ -138,7 +140,8 @@ public class Pax extends Organism {
                 if (myGrid[sIndex][sIndex2].currentState == State.EMPTY) {
                     this.currentMovement = Movement.SOUTH;
                     this.currentState = State.MOVE;
-                    this.location = (south.x, south.y);
+                    this.location.x = south.x;
+                    this.location.y = south.y;
                     if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) {
                         this.willReproduce = true;
                     }
@@ -154,7 +157,8 @@ public class Pax extends Organism {
                 if (myGrid[wIndex][wIndex2].currentState == State.EMPTY) {
                     this.currentMovement = Movement.WEST;
                     this.currentState = State.MOVE;
-                    this.location = (west.x, west.y);
+                    this.location.x = west.x;
+                    this.location.y = west.y;
                     if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) {
                         this.willReproduce = true;
                     }
