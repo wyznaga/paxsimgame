@@ -23,18 +23,18 @@ public class PaxGhostsGame extends JFrame {
     private JButton populateButton = new JButton("Populate");
     private JTextField ghostCount = new JTextField("100");
     private JTextField paxCount = new JTextField("500");
-    
+
     private JTextField ghostGestationPeriod = new JTextField("3");
     private JTextField paxGestationPeriod = new JTextField("5");
     private JTextField ghostStarvationPeriod = new JTextField("8");
     private TitledBorder ghostBorder = new TitledBorder("Ghosts");
     private TitledBorder paxBorder = new TitledBorder("Pax");
-    
+
     private final static int WORLD_SIZE = 100;
 
     private WorldGrid world;
     private boolean running = false;
-    
+
     public static void main(String[] args) {
         private PaxGhostsGame thisFrame = new PaxGhostsGame();
         while (true)
@@ -51,7 +51,7 @@ public class PaxGhostsGame extends JFrame {
             }
         }
     }
-    
+
     public void loop()
     {
         while (world.isRunning)
@@ -65,7 +65,7 @@ public class PaxGhostsGame extends JFrame {
              this loop */
         }
     }
-        
+
     class ImagePanel extends JPanel
     {
         private Image img;
@@ -73,7 +73,7 @@ public class PaxGhostsGame extends JFrame {
         {
             this(new ImageIcon(img).getImage());
         }
-    
+
         public ImagePanel(Image img)
         {
             this.img = img;
@@ -94,7 +94,7 @@ public class PaxGhostsGame extends JFrame {
     public PaxGhostsGame()
     {
         thisFrame = this;
-        
+
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } 
@@ -106,7 +106,7 @@ public class PaxGhostsGame extends JFrame {
         }
         catch (IllegalAccessException e) {
         }
-        
+
         this.setLayout(new BorderLayout());
         ImagePanel panelBGImage = new ImagePanel(new ImageIcon("BGP.jpg").getImage());
         thisFrame.getContentPane().add(panelBGImage);
@@ -120,7 +120,7 @@ public class PaxGhostsGame extends JFrame {
         runPanel.setLayout(new FlowLayout());
         ghostPanel.setLayout(new GridLayout(6, 1));
         paxPanel.setLayout(new GridLayout(6, 1));
-        
+
         ghostPanel.setBorder(sharkBorder);
         ghostPanel.add(new JLabel("Initial number:"));
         ghostPanel.add(ghostCount);
@@ -128,7 +128,7 @@ public class PaxGhostsGame extends JFrame {
         ghostPanel.add(ghostGestationPeriod);
         ghostPanel.add(new JLabel("Time to Starve:"));
         ghostPanel.add(ghostStarvationPeriod);
-        
+
         paxPanel.setBorder(paxBorder);
         paxPanel.add(new JLabel("Initial number:"));
         paxPanel.add(paxCount);
@@ -138,58 +138,46 @@ public class PaxGhostsGame extends JFrame {
         runPanel.setLayout(new BorderLayout());
         runPanel.add(speedControlPanel, BorderLayout.CENTER);
         runPanel.add(buttonPanel, BorderLayout.EAST);
-        
+
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(populateButton);
         buttonPanel.add(runButton);
-        
+
         speedControlPanel.add(speedControl);
         speedControl.setMajorTickSpacing(20);
         speedControl.setMinorTickSpacing(5);
         speedControl.setPaintTicks(true);
         speedControl.setPaintLabels(true);
         speedControl.setValueIsAdjusting(true);
-        
+
         world = new WorldGrid(WORLD_SIZE, WORLD_SIZE);
-        
+
         public class OurPixelCanvas extends Canvas
         {
             private static final int WIDTH = WORLD_SIZE;
             private static final int HEIGHT = WORLD_SIZE;
-        
+
+            public OurPixelCanvas()
+            {
+                setBackground(Color.BLACK);
+            }
+
             @Override
             public void paint(Graphics g)
             {
-                super.paint(g);
-        
-                for(int y = HEIGHT; y > 0; y--)
-                {
-                    for(int x = 0; x < WIDTH; x++)
-                    {
-                        g.setColor(randomColor());
-                        g.drawLine(x, y, x, y);
-                    }
-                }
-            }
-
-            public static void main(String[] args) {
-                JFrame frame = new JFrame();
-
-                frame.setSize(WIDTH, HEIGHT);
-                frame.add(new PixelCanvas());
-
-                frame.setVisible(true);
+                Graphics2D g2;
+                g2 = (Graphics) g;
             }
         }
 
         OurPixelCanvas display = new OurPixelCanvas();
-        
+
         this.add(display, BorderLayout.CENTER);
 
         //display.setWorld(world); nor this
         attachListeners();
         //world.addObserver(display); nor this
-        
+
         this.pack();
         this.setSize(640, 640);
         this.setVisible(true);

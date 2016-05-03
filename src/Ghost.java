@@ -52,15 +52,7 @@ public class Ghost extends Organism {
 
     public void simulate()
     {
-        if (this.currentState = DIE)
-        {
-            this.currentMovement = STATIC;
-            this.location = (-1,-1);
-        }
-        
-        else
-        {
-            for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
             {
                 switch (i) {
                     case 0:
@@ -127,10 +119,10 @@ public class Ghost extends Organism {
                 }
                 switch (huntIndex) {
                     case 0:
-                        if (myGrid[nIndex][nIndex2].currentState == PAX)
+                        if (myGrid[nIndex][nIndex2].currentState == State.PAX)
                         {
-                            this.currentMovement = NORTH;
-                            this.currentState = MOVE;
+                            this.currentMovement = Movement.NORTH;
+                            this.currentState = State.MOVE;
                             this.willEat = true;
                             this.location = (north.x, north.y);
                             this.willReproduce = true;
@@ -139,10 +131,10 @@ public class Ghost extends Organism {
                         }
                         break;
                     case 1:
-                        if (myGrid[nIndex][nIndex2].currentState == PAX)
+                        if (myGrid[nIndex][nIndex2].currentState == State.PAX)
                         {
-                            this.currentMovement = EAST;
-                            this.currentState = MOVE;
+                            this.currentMovement = Movement.EAST;
+                            this.currentState = State.MOVE;
                             this.willEat = true;
                             this.location = (east.x, east.y);
                             this.willReproduce = true;
@@ -151,10 +143,10 @@ public class Ghost extends Organism {
                         }
                         break;
                     case 2:
-                        if (myGrid[nIndex][nIndex2].currentState == PAX)
+                        if (myGrid[nIndex][nIndex2].currentState == State.PAX)
                         {
-                            this.currentMovement = SOUTH;
-                            this.currentState = MOVE;
+                            this.currentMovement = Movement.SOUTH;
+                            this.currentState = State/MOVE;
                             this.location = (south.x, south.y);
                             this.willEat = true;
                             this.willReproduce = true;
@@ -163,10 +155,10 @@ public class Ghost extends Organism {
                         }
                         break;
                     case 3:
-                        if (myGrid[nIndex][nIndex2].currentState == PAX)
+                        if (myGrid[nIndex][nIndex2].currentState == State.PAX)
                         {
-                            this.currentMovement = WEST;
-                            this.currentState = MOVE;
+                            this.currentMovement = Movement.WEST;
+                            this.currentState = State.MOVE;
                             this.location = (west.x, west.y);
                             this.willEat = true;
                             this.willReproduce = true;
@@ -182,9 +174,9 @@ public class Ghost extends Organism {
                 int randomInt = randNum.nextInt(4);
                 switch (randomInt) {
                     case 0:
-                        if (myGrid[nIndex][nIndex2].currentState == EMPTY) {
-                            this.currentMovement = NORTH;
-                            this.currentState = MOVE;
+                        if (myGrid[nIndex][nIndex2].currentState == State.EMPTY) {
+                            this.currentMovement = Movement.NORTH;
+                            this.currentState = State.MOVE;
                             this.location = (north.x, north.y);
                             this.energy--;
                         }
@@ -194,7 +186,7 @@ public class Ghost extends Organism {
                         }
                         break;
                     case 1:
-                        if (myGrid[eIndex][eIndex2].currentState == EMPTY) {
+                        if (myGrid[eIndex][eIndex2].currentState == State.EMPTY) {
                             this.currentMovement = EAST;
                             this.currentState = MOVE;
                             this.location = (east.x, east.y);
@@ -206,7 +198,7 @@ public class Ghost extends Organism {
                         }
                         break;
                     case 2:
-                        if (myGrid[sIndex][sIndex2].currentState == EMPTY) {
+                        if (myGrid[sIndex][sIndex2].currentState == State.EMPTY) {
                             this.currentMovement = SOUTH;
                             this.currentState = MOVE;
                             this.location = (south.x, south.y);
@@ -218,7 +210,7 @@ public class Ghost extends Organism {
                         }
                         break;
                     case 3:
-                        if (myGrid[wIndex][wIndex2].currentState == EMPTY) {
+                        if (myGrid[wIndex][wIndex2].currentState == State.EMPTY) {
                             this.currentMovement = WEST;
                             this.currentState = MOVE;
                             this.location = (west.x, west.y);

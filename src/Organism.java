@@ -88,7 +88,7 @@ public class Organism {
     {
         this.willDie = inBool;
     }
-    public int getLocation()
+    public Point getLocation()
     {
         return this.location;
     }

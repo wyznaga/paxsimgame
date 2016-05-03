@@ -1,5 +1,8 @@
 import java.awt.Point;
-impot java.util.Random;
+import java.util.Random;
+import Cell;
+import Pax;
+import Ghost;
 
 public class WorldGrid {
     int ht; // grid height
@@ -55,7 +58,7 @@ public class WorldGrid {
                 int paxPointX = randomPaxPointX.nextInt(wd);
                 int paxPointY = randomPaxPointX.nextInt(ht);
                 Point paxPointPlace = new Point(paxPointX, paxPointY);
-                if (createdGrid[((this.wd-1)-paxPointX)][((this.ht-1)-paxPointY)].getState == EMPTY)
+                if (createdGrid[((this.wd-1)-paxPointX)][((this.ht-1)-paxPointY)].getState == State.EMPTY)
                 {
                     createdGrid[((this.wd-1)-paxPointX)][((this.ht-1)-paxPointY)].setState(PAX);
                     paxArr[i].setLocation(paxPointPlace);
@@ -64,7 +67,7 @@ public class WorldGrid {
                     createdGrid[((this.wd-1)-paxPointX)][((this.ht-1)-paxPointY)].setWillHavePax(true);
                     break;
                 }
-                else if (!(createdGrid[((this.wd-1)-paxPointX)][((this.ht-1)-paxPointY)].getState == EMPTY))
+                else if (!(createdGrid[((this.wd-1)-paxPointX)][((this.ht-1)-paxPointY)].getState == State.EMPTY))
                 {
                     continue;
                 }
@@ -78,7 +81,7 @@ public class WorldGrid {
                 int ghostPointX = randomGhostPointX.nextInt(wd);
                 int ghostPointY = randomGhostPointX.nextInt(ht);
                 Point ghostPointPlace = new Point(ghostPointX, ghostPointY);
-                if (createdGrid[((this.wd-1)-ghostPointX)][((this.ht-1)-ghostPointY)].getState == EMPTY)
+                if (createdGrid[((this.wd-1)-ghostPointX)][((this.ht-1)-ghostPointY)].getState == State.EMPTY)
                 {
                     createdGrid[((this.wd-1)-ghostPointX)][((this.ht-1)-ghostPointY)].setState(PAX);
                     ghostArr[j].setLocation(ghostPointPlace);
@@ -89,7 +92,7 @@ public class WorldGrid {
                     createdGrid[((this.wd-1)-ghostPointX)][((this.ht-1)-ghostPointY)].setWillHaveGhost(true);
                     break;
                 }
-                else if (!(createdGrid[((this.wd-1)-ghostPointX)][((this.ht-1)-ghostPointY)].getState == EMPTY))
+                else if (!(createdGrid[((this.wd-1)-ghostPointX)][((this.ht-1)-ghostPointY)].getState == State.EMPTY))
                 {
                     continue;
                 }

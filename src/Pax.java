@@ -103,9 +103,9 @@ public class Pax extends Organism {
         int randomInt = randNum.nextInt(4);
         switch (randomInt) {
             case 0:
-                if (myGrid[nIndex][nIndex2].currentState == EMPTY) {
-                    this.currentMovement = NORTH;
-                    this.currentState = MOVE;
+                if (myGrid[nIndex][nIndex2].currentState == State.EMPTY) {
+                    this.currentMovement = Movement.NORTH;
+                    this.currentState = State.MOVE;
                     this.location = (north.x, north.y);
                     if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) { // need to change these numbers
                         this.willReproduce = true;
@@ -113,15 +113,15 @@ public class Pax extends Organism {
                     this.lifetime++;
                 }
                 else {
-                    this.currentMovement = STATIC;
-                    this.currentState = LIVE;
+                    this.currentMovement = State.STATIC;
+                    this.currentState = Movement.LIVE;
                     this.lifetime++;
                 }
                 break;
             case 1:
-                if (myGrid[eIndex][eIndex2].currentState == EMPTY) {
-                    this.currentMovement = EAST;
-                    this.currentState = MOVE;
+                if (myGrid[eIndex][eIndex2].currentState == State.EMPTY) {
+                    this.currentMovement = Movement.EAST;
+                    this.currentState = State.MOVE;
                     this.location = (east.x, east.y);
                     if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) {
                         this.willReproduce = true;
@@ -129,15 +129,15 @@ public class Pax extends Organism {
                     this.lifetime++;
                 }
                 else {
-                    this.currentMovement = STATIC;
-                    this.currentState = LIVE;
+                    this.currentMovement = State.STATIC;
+                    this.currentState = Movement.LIVE;
                     this.lifetime++;
                 }
                 break;
             case 2:
-                if (myGrid[sIndex][sIndex2].currentState == EMPTY) {
-                    this.currentMovement = SOUTH;
-                    this.currentState = MOVE;
+                if (myGrid[sIndex][sIndex2].currentState == State.EMPTY) {
+                    this.currentMovement = Movement.SOUTH;
+                    this.currentState = State.MOVE;
                     this.location = (south.x, south.y);
                     if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) {
                         this.willReproduce = true;
@@ -145,15 +145,15 @@ public class Pax extends Organism {
                     this.lifetime++;
                 }
                 else {
-                    this.currentMovement = STATIC;
-                    this.currentState = LIVE;
+                    this.currentMovement = Movement.STATIC;
+                    this.currentState = State.LIVE;
                     this.lifetime++;
                 }
                 break;
             case 3:
-                if (myGrid[wIndex][wIndex2].currentState == EMPTY) {
-                    this.currentMovement = WEST;
-                    this.currentState = MOVE;
+                if (myGrid[wIndex][wIndex2].currentState == State.EMPTY) {
+                    this.currentMovement = Movement.WEST;
+                    this.currentState = State.MOVE;
                     this.location = (west.x, west.y);
                     if ((lifetime >= this.gestationPax) && (lifetime % this.gestationPax == 0)) {
                         this.willReproduce = true;
@@ -161,8 +161,8 @@ public class Pax extends Organism {
                     this.lifetime++;
                 }
                 else {
-                    this.currentMovement = STATIC;
-                    this.currentState = LIVE;
+                    this.currentMovement = Movement.STATIC;
+                    this.currentState = State.LIVE;
                     this.lifetime++;
                 }
                 break;

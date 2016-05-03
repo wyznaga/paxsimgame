@@ -20,7 +20,7 @@ public class Cell {
 
     public Cell()
     {
-        this.currentState = EMPTY;
+        this.currentState = (State.EMPTY);
     }
 
     public void setLocation(int xLoc, int yLoc)
